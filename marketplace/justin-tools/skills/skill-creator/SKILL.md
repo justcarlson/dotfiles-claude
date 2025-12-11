@@ -3,6 +3,8 @@ name: skill-creator
 description: This skill should be used when the user asks to "create a skill", "convert a skill", "make a new skill", "build a skill", or asks about skill development for Claude Code plugins.
 ---
 
+Create new Claude Code skills or convert existing ones from other platforms.
+
 # Purpose
 
 Create excellent skills for Claude Code plugins. Either convert an existing skill from another platform, or create a new skill from scratch.

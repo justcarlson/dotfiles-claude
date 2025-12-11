@@ -3,6 +3,8 @@ name: heal-skill
 description: This skill should be used when the user asks to "heal skill", "fix the skill", "that skill confused you", "improve that skill", or wants to analyze and fix a skill that caused confusion.
 ---
 
+Analyze session confusion, diagnose problematic skills, and apply fixes.
+
 # Purpose
 
 Analyze the current session to identify when confusion occurred, determine which skill was involved, diagnose the root cause, and apply a fix to prevent future issues.

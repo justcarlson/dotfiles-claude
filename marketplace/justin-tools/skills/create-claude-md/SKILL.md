@@ -3,6 +3,8 @@ name: create-claude-md
 description: This skill should be used when the user asks to "create CLAUDE.md", "make CLAUDE.md", "generate CLAUDE.md", "init claude", or asks about CLAUDE.md best practices for Claude Code projects.
 ---
 
+Generate token-efficient CLAUDE.md files with progressive disclosure.
+
 # Purpose
 
 Create excellent CLAUDE.md files that guide Claude Code effectively while being token-efficient.

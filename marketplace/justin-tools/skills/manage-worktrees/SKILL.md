@@ -3,6 +3,8 @@ name: manage-worktrees
 description: This skill should be used when the user asks to "create a worktree", "list worktrees", "cleanup worktrees", "sync worktree", "run parallel sessions", or needs help with git worktree management for parallel development.
 ---
 
+Create and manage git worktrees for parallel development and Claude sessions.
+
 # Git Worktrees for Parallel Development
 
 Git worktrees let you have **multiple working directories** from the same repository, each with a different branch checked out. Think of them as **parallel universes** of your code - changes in one don't affect the others, but they all share the same Git history.

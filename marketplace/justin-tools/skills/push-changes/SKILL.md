@@ -3,6 +3,8 @@ name: push-changes
 description: This skill should be used when the user asks to "push changes", "commit and push", "push this", "push to github", or completes work and wants to save changes with conventional commit messages.
 ---
 
+Stage, commit with conventional messages, and push to remote in one workflow.
+
 # Purpose
 
 Stage all changes, create a conventional commit message, and push to remote.
