@@ -1,0 +1,13 @@
+{
+  "name": "dotfiles-claude",
+  "owner": {
+    "name": "Justin Carlson"
+  },
+  "plugins": [
+    {
+      "name": "justin-tools",
+      "source": "./justin-tools",
+      "description": "Personal productivity tools: git workflows, skill management, and documentation generation"
+    }
+  ]
+}

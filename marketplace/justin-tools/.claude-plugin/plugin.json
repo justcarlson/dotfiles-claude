@@ -1,0 +1,8 @@
+{
+  "name": "justin-tools",
+  "description": "Personal productivity tools for git workflows, skill management, and documentation generation",
+  "version": "1.0.0",
+  "author": {
+    "name": "Justin Carlson"
+  }
+}
