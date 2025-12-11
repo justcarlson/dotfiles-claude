@@ -1,130 +1,168 @@
 # dotfiles-claude
 
-Personal collection of Claude Code skills, commands, and productivity tools.
+Personal Claude Code plugin with skills and commands for everyday workflows.
 
-Converted from [dotfiles-factory](https://github.com/YOUR_USERNAME/dotfiles-factory) for use with Claude Code.
+## Philosophy
 
-## Contents
+These tools follow the **no-ambiguity pattern**: explicit conditions, clear examples, and deterministic behavior. Every skill uses IF/THEN/EXAMPLES blocks so Claude knows exactly what to do.
 
-### Skills (model-invoked)
+Converted from [dotfiles-factory](https://github.com/justcarlson/dotfiles-factory) for Claude Code.
 
-| Skill | Description |
-|-------|-------------|
-| `push-changes` | Stage, commit with conventional messages, and push |
-| `manage-worktrees` | Git worktree management for parallel development |
-| `skill-creator` | Create new Claude Code skills or convert existing ones |
-| `heal-skill` | Analyze and fix skills that caused confusion |
-| `create-claude-md` | Generate token-efficient CLAUDE.md files |
+## What's Inside
 
-### Commands (user-invoked)
+**[Commands](#commands)** (5 total) - Slash commands for common tasks
 
-| Command | Description |
-|---------|-------------|
-| `/push` | Commit and push changes |
-| `/worktree` | Manage git worktrees |
-| `/heal-skill` | Fix problematic skills |
-| `/create-skill` | Create or convert skills |
-| `/claude-md` | Create CLAUDE.md for current project |
+- **Git Workflow**: Push changes with conventional commits
+- **Parallel Development**: Create and manage git worktrees
+- **Skill Management**: Create, convert, and fix skills
+- **Documentation**: Generate CLAUDE.md files
+
+**[Skills](#skills)** (5 total) - Autonomous workflows with supporting files
+
+- **push-changes**: Stage, commit with conventional messages, push
+- **manage-worktrees**: Git worktree management for parallel Claude sessions
+- **skill-creator**: Create new skills or convert from other platforms
+- **heal-skill**: Diagnose and fix skills that caused confusion
+- **create-claude-md**: Generate token-efficient CLAUDE.md files
 
 ## Installation
 
-### Step 1: Clone the repository
+### Plugin Install (Recommended)
 
 ```bash
-git clone git@github.com:YOUR_USERNAME/dotfiles-claude.git ~/dev/dotfiles-claude
-```
-
-### Step 2: Add marketplace and install plugin
-
-In a Claude Code session, run:
-
-```
+# In Claude Code session:
 /plugin marketplace add ~/dev/dotfiles-claude/marketplace
 /plugin install justin-tools@dotfiles-claude
 ```
 
-### Step 3: Restart Claude Code
+Restart Claude Code to use the commands and skills.
 
-The plugin will be available after restarting.
+### From GitHub
 
-## Uninstallation
+```bash
+# Clone the repo
+git clone https://github.com/justcarlson/dotfiles-claude.git ~/dev/dotfiles-claude
 
-In a Claude Code session:
-
+# Then add plugin in Claude Code session
+/plugin marketplace add ~/dev/dotfiles-claude/marketplace
+/plugin install justin-tools@dotfiles-claude
 ```
-/plugin uninstall justin-tools@dotfiles-claude
-/plugin marketplace remove dotfiles-claude
-```
 
-## Usage
+## Commands
 
-After installation, skills are automatically available based on trigger phrases:
+### Git Workflow
 
-- "push changes" → triggers `push-changes` skill
-- "create a worktree" → triggers `manage-worktrees` skill
-- "create a skill" → triggers `skill-creator` skill
-- "heal skill" → triggers `heal-skill` skill
-- "create CLAUDE.md" → triggers `create-claude-md` skill
+- [`/push`](marketplace/justin-tools/commands/push.md) - Stage, commit with conventional messages, and push
+- [`/worktree`](marketplace/justin-tools/commands/worktree.md) - Create, list, cleanup, or sync git worktrees
 
-Or use slash commands directly:
+### Skill Management
 
-```
-/push
-/worktree create feature-auth
-/heal-skill
-/create-skill my-new-skill
-/claude-md
-```
+- [`/create-skill`](marketplace/justin-tools/commands/create-skill.md) - Create or convert Claude Code skills
+- [`/heal-skill`](marketplace/justin-tools/commands/heal-skill.md) - Fix skills based on session confusion
+
+### Documentation
+
+- [`/claude-md`](marketplace/justin-tools/commands/claude-md.md) - Generate CLAUDE.md for current project
+
+## Skills
+
+### [push-changes](marketplace/justin-tools/skills/push-changes)
+
+Conventional commit workflow. Auto-detects commit type from changes, stages everything, commits with proper format, and pushes.
+
+**Includes:** `scripts/smart_commit.sh`, `references/conventional-commits.md`
+
+**Triggers:** "push changes", "commit and push", "push this", "push to github"
+
+### [manage-worktrees](marketplace/justin-tools/skills/manage-worktrees)
+
+Git worktree management for running parallel Claude sessions. Create feature worktrees, sync with main, cleanup merged branches.
+
+**Includes:** 4 shell scripts, 2 reference docs
+
+**Triggers:** "create a worktree", "list worktrees", "cleanup worktrees", "sync worktree"
+
+### [skill-creator](marketplace/justin-tools/skills/skill-creator)
+
+Create new skills from scratch or convert existing ones from Factory Droid, GitHub, or other platforms. Interactive discovery with questionnaire.
+
+**Includes:** 2 cookbooks, 2 prompts, 3 references
+
+**Triggers:** "create a skill", "convert a skill", "make a new skill"
+
+### [heal-skill](marketplace/justin-tools/skills/heal-skill)
+
+Analyze session confusion to identify problematic skills. Diagnose root cause and apply fixes with user approval.
+
+**Includes:** 3 cookbooks, 2 prompts, 1 reference
+
+**Triggers:** "heal skill", "fix the skill", "that skill confused you"
+
+### [create-claude-md](marketplace/justin-tools/skills/create-claude-md)
+
+Generate token-efficient CLAUDE.md files. Analyzes project structure, identifies tech stack, creates documentation covering six core areas.
+
+**Includes:** 2 cookbooks, 2 prompts, 2 references
+
+**Triggers:** "create CLAUDE.md", "make CLAUDE.md", "init claude"
+
+---
 
 ## Structure
 
 ```
 dotfiles-claude/
-├── marketplace/                        # Local plugin marketplace
+├── marketplace/
 │   ├── .claude-plugin/
 │   │   └── marketplace.json
-│   └── justin-tools/                   # Personal plugin
+│   └── justin-tools/
 │       ├── .claude-plugin/
 │       │   └── plugin.json
-│       ├── commands/                   # Slash commands
-│       │   ├── push.md
-│       │   ├── worktree.md
-│       │   ├── heal-skill.md
-│       │   ├── create-skill.md
-│       │   └── claude-md.md
-│       ├── skills/                     # Model-invoked skills
-│       │   ├── push-changes/
-│       │   ├── manage-worktrees/
-│       │   ├── skill-creator/
-│       │   ├── heal-skill/
-│       │   └── create-claude-md/
-│       └── agents/                     # Subagents (future)
+│       ├── commands/           # 5 slash commands
+│       ├── skills/             # 5 skills with supporting files
+│       └── agents/             # Future subagents
 ├── install.sh
 ├── uninstall.sh
 └── README.md
 ```
 
-## Key Differences from Factory Droid
-
-| Feature | Factory Droid | Claude Code |
-|---------|---------------|-------------|
-| Personal skills | `~/.factory/skills/` | Plugin only |
-| Personal commands | `~/.factory/commands/` | `~/.claude/commands/` or plugin |
-| Agents/Droids | `~/.factory/droids/` | Plugin `agents/` only |
-| Project instructions | `.factory/agents.md` | `CLAUDE.md` |
-
 ## Adding New Skills
 
-1. Create skill directory in `marketplace/justin-tools/skills/<skill-name>/`
-2. Add `SKILL.md` with YAML frontmatter
-3. Reinstall plugin: `/plugin uninstall justin-tools@dotfiles-claude && /plugin install justin-tools@dotfiles-claude`
+```bash
+# Create skill directory
+mkdir -p marketplace/justin-tools/skills/my-skill/{references,scripts}
+
+# Create SKILL.md with frontmatter
+cat > marketplace/justin-tools/skills/my-skill/SKILL.md << 'EOF'
+---
+name: my-skill
+description: This skill should be used when the user asks to "trigger phrase 1", "trigger phrase 2".
+---
+
+# Purpose
+...
+EOF
+
+# Reinstall plugin
+/plugin uninstall justin-tools@dotfiles-claude
+/plugin install justin-tools@dotfiles-claude
+```
 
 ## Adding New Commands
 
-1. Create markdown file in `marketplace/justin-tools/commands/<command-name>.md`
-2. Add YAML frontmatter with `description`
-3. Reinstall plugin to pick up changes
+```bash
+cat > marketplace/justin-tools/commands/my-command.md << 'EOF'
+---
+description: What this command does
+argument-hint: [optional-args]
+---
 
-## License
+Instructions for Claude when command is invoked.
+EOF
+```
 
-MIT
+---
+
+More tools coming as workflows evolve.
+
+— Justin
