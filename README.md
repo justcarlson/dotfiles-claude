@@ -48,6 +48,16 @@ git clone https://github.com/justcarlson/dotfiles-claude.git ~/dev/dotfiles-clau
 /plugin install justin-tools@dotfiles-claude
 ```
 
+## Updating
+
+After pulling changes or adding new skills/commands:
+
+```bash
+/plugin marketplace update dotfiles-claude
+```
+
+This refreshes the plugin in-place without needing to uninstall and reinstall.
+
 ## Commands
 
 ### Git Workflow
