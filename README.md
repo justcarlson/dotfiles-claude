@@ -139,13 +139,14 @@ name: my-skill
 description: This skill should be used when the user asks to "trigger phrase 1", "trigger phrase 2".
 ---
 
+Brief summary shown in Claude Code UI (max 15 words).
+
 # Purpose
 ...
 EOF
 
-# Reinstall plugin
-/plugin uninstall justin-tools@dotfiles-claude
-/plugin install justin-tools@dotfiles-claude
+# Update plugin in-place
+/plugin marketplace update dotfiles-claude
 ```
 
 ## Adding New Commands
